@@ -12,8 +12,6 @@
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF.svg)](.github/workflows)
 [![Code Style](https://img.shields.io/badge/Code%20Style-Ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
-[![Stars](https://img.shields.io/github/stars/yourusername/ai-automl-platform?style=social)](https://github.com/yourusername/ai-automl-platform/stargazers)
-[![Forks](https://img.shields.io/github/forks/yourusername/ai-automl-platform?style=social)](https://github.com/yourusername/ai-automl-platform/network/members)
 
 **Upload any dataset → AI automatically analyzes, cleans, builds ML models, generates reports, deploys APIs, and monitors performance.**
 
