@@ -1,0 +1,46 @@
+# .github/workflows/cd.yml
+name: CD Pipeline - Deploy
+
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    branches: [main]
+    types: [completed]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to AWS EC2
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /opt/automl-platform
+            git pull origin main
+            docker compose -f deployment/docker/docker-compose.prod.yml down
+            docker compose -f deployment/docker/docker-compose.prod.yml pull
+            docker compose -f deployment/docker/docker-compose.prod.yml up -d
+            docker system prune -f
+
+      - name: Health Check
+        run: |
+          sleep 30
+          curl -f ${{ secrets.APP_URL }}/health || exit 1
+
+      - name: Notify
+        if: always()
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "Deployment ${{ job.status }}: ${{ github.repository }}@${{ github.sha }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
