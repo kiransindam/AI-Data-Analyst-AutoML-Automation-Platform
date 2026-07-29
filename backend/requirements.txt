@@ -1,4 +1,3 @@
-# backend/requirements.txt
 # Web Framework
 fastapi==0.111.0
 uvicorn[standard]==0.30.0
@@ -7,64 +6,31 @@ aiofiles==24.1.0
 
 # Database
 sqlalchemy==2.0.30
-psycopg2-binary==2.9.9
-pymongo==4.7.0
-redis==5.0.4
 alembic==1.13.1
 
-# Auth & Security
+# Auth
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
+
+# Validation
 pydantic==2.7.0
 pydantic-settings==2.3.0
 
-# Data Processing
+# Data
 pandas==2.2.2
 numpy==1.26.4
-polars==0.20.31
 openpyxl==3.1.2
-pyarrow==16.1.0
 
-# Machine Learning
+# ML
 scikit-learn==1.5.0
-xgboost==2.0.3
-lightgbm==4.3.0
 joblib==1.4.2
-
-# AutoML (optional)
-# pycaret==3.3.2
-# autogluon==1.1.0
-
-# AI / LLM
-langchain==0.2.5
-langchain-openai==0.1.8
-langgraph==0.1.5
-llama-index==0.10.44
-openai==1.35.0
-
-# Visualization
-plotly==5.22.0
-matplotlib==3.9.0
-seaborn==0.13.2
-
-# Reports
-reportlab==4.2.0
-python-pptx==0.6.23
-xlsxwriter==3.2.0
-jinja2==3.1.4
-
-# Monitoring
-prometheus-client==0.20.0
-mlflow==2.14.0
 
 # Utilities
 httpx==0.27.0
 python-dotenv==1.0.1
-celery==5.4.0
-boto3==1.34.131
+jinja2==3.1.4
 
 # Testing
 pytest==8.2.0
-pytest-asyncio==0.23.7
 pytest-cov==5.0.0
-httpx==0.27.0
+pytest-asyncio==0.23.7
